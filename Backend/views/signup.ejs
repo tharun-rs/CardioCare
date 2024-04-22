@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-width, initial scale = 1.0">
+    <title>CC-login</title>
+    <link rel="icon" type="image/x-icon" href="/documents/images/icon.png">
+    <link rel="stylesheet" href="/styles/login.css">
+</head>
+
+<body>
+    <div class="container" style="top: 100px;">
+        <a href="/"><img style="height: 15px; width: 15px;" src="/documents/images/closemark.png"></a>
+        <form method="post">
+            <input type="text" id="fname" name="fname" placeholder="First Name"><br><br>
+            <input type="text" id="lname" name="lname" placeholder="Last Name"><br><br>
+            <input type="text" id="email" name="email" placeholder="Email"><br><br>
+            <input type="text" id="pwd" name="pwd" placeholder="Password"><br><br>
+            <% if (message) { %>
+            <p class="warning"><%= message %>!</p>
+            <% } %>
+            <div class="log-btn"><input type="submit" value="SignUp"></div>
+        </form>
+        <br>
+        <div class="log-btn">Already a member?<a href="login">Login</a></div>
+    </div>
+</body>
+</html>

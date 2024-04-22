@@ -1,0 +1,123 @@
+:root{
+    --blood: #780000;
+    --wine: #6f0b0b;
+    --red:  #c40909; 
+    --morered: #ba0000;
+    --lessred: #ff5c59;
+    --paradise: #EF476F;
+    --darkparadise: #7e293d;
+    --crayola: #FFD166;
+    --green: #06D6A0;
+    --powder: #ebe0c6;
+    --white: #fff;
+    --black: #000;
+    --yellow: #fc9c08;
+    --purple: #3b1882;
+    --morepurple: #2b175a;
+    --peachy: #c3afaf;
+    --indigo: #070a28;
+}
+
+body{
+    height: 100vh;
+    margin: auto;
+    overflow: hidden;
+}
+
+* {
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    text-align: center;
+}
+
+.container{
+    height: 100%;
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 1px;
+}
+
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    grid-row: 1/6;
+    grid-column: 1/3;
+    background-color: var(--wine);
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+}
+
+.upperbar{
+    box-sizing: border-box;
+    padding-bottom: 15px;
+    display: flex;
+    align-items:last baseline;
+    justify-content: center;
+    column-gap: 52%;
+    grid-column: 3/10;
+    background-color: var(--powder);
+}
+
+.dash-body{
+    grid-column: 3/10;
+    grid-row: 2/6;
+    background-color: var(--powder);
+}
+
+.title{
+    font-weight: bold;
+    font-size: 23px;
+    position: relative;
+    top: 50px;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: fit-content;
+
+    position: relative;
+    top: 130px;
+}
+
+a{
+    margin: 21px;
+    padding: 20px;
+    text-decoration: none;
+}
+
+a:hover{
+    background-color: var(--powder);
+    color:black;
+    width: 100%;
+    border-radius: 15px;
+}
+
+#one, #two, #three{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-top: 45px;
+    text-align: left;
+}
+
+.heading{
+    color: black;
+    font-size: 38px;
+    font-weight: bolder;
+}
+.profile{
+    position: relative;
+    right: -20px;
+}
+
+.profile img{
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}

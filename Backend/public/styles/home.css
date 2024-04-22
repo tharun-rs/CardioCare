@@ -1,0 +1,77 @@
+:root{
+    --blood: #780000;
+    --wine: #6f0b0b;
+    --red:  #c40909; 
+    --morered: #ba0000;
+    --paradise: #EF476F;
+    --crayola: #FFD166;
+    --green: #06D6A0;
+    --powder: #ebe0c6;
+    --white: #fff;
+    --black: #000;
+    --yellow: #fc9c08;
+    --purple: #3b1882;
+    --morepurple: #2b175a;
+    --peachy: #c3afaf;
+}
+
+body{
+    /*background-image: url(images/a5acd0f2-9147-4bce-91e5-4d775bdff114.jpeg);*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#myVideo {
+    position: fixed;
+    filter: saturate(140%);
+    filter: brightness(80%);
+    filter: contrast(110%);
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 1;
+}
+
+.container{
+    z-index: 2;
+    background-color: transparent;
+    flex-direction: column;
+    display: flex;
+    width: 650px;
+    text-align: center;
+    padding: 3rem;
+    padding-bottom: 4rem;
+    border-radius: 80px;
+    /*box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.619);*/
+}
+
+
+.text{
+    color: var(--black);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+}
+
+.container:hover{
+    background-color: #7b7b7b46;
+}
+
+.one{
+    text-shadow: 0 0 3px var(--white);
+    text-shadow: 3px 3px var(--wine);
+    letter-spacing: 3px;
+    font-weight: bolder;
+    font-size: 85px;
+    color: white;
+}
+
+
+a{
+    color: var(--black);
+    text-decoration: none;
+    color: var(--indigo);
+}

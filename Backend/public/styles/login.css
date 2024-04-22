@@ -1,0 +1,113 @@
+:root{
+    --blood: #780000;
+    --wine: #6f0b0b;
+    --red:  #c40909; 
+    --morered: #ba0000;
+    --paradise: #EF476F;
+    --crayola: #FFD166;
+    --green: #06D6A0;
+    --powder: #ebe0c6;
+    --white: #fff;
+    --black: #000;
+    --yellow: #fc9c08;
+    --purple: #3b1882;
+    --morepurple: #2b175a;
+    --peachy: #c3afaf;
+    --grey: #585858;
+}
+
+body{
+    background-image: url(/documents/images/scott-webb-TOmVNJZN1AA-unsplash.jpg);
+    image-rendering: optimizeQuality;
+    height: 100vh;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#myVideo {
+    position: fixed;
+    filter: saturate(100%);
+    filter: brightness(50%);
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 1;
+}
+
+.container{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 50px;
+    border-radius: 15px;
+    position: relative;
+    top: 160px;
+    left: 400px;
+    z-index: 2;
+    background-color: var(--blood);
+    height: fit-content;
+    width: fit-content;
+}
+
+.container:hover{
+    box-shadow: 0 0 100px var(--black);
+}
+
+form{
+    padding-bottom: 10px;
+}
+
+input[type=text]{
+    box-sizing: border-box;
+    border-radius: 15px;
+    padding-left: 10px;
+    height: 40px;
+    width: 350px;
+    border-style: none;
+    color: var(--grey);
+    outline: none;
+}
+
+input[type=text]:hover{
+    box-shadow: 0 0 10px var(--white);
+}
+
+input[type=submit]{
+    margin-top: 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    height: 30px;
+    width: 75px;
+    color:var(--black);
+    background-color: var(--peachy);
+    border-radius: 10px;
+    outline: none;
+    border-style: none;
+}
+
+input[type=submit]:hover{
+    box-shadow: 0 0 10px var(--white);
+}
+
+.log-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a{
+    color: var(--white);
+    text-decoration: none;
+}
+
+img{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.warning {
+    color: #fc9c08;
+}

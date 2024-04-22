@@ -1,2 +1,4 @@
 /venv
 api/__pycache__/torch_utils.cpython-312.pyc
+.env
+/Backend/node_modules
