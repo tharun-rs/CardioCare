@@ -6,13 +6,18 @@ const collection = require("../config");
 
 //render page
 router.get('/', (req,res) => {
-    res.render('login', {message: null});
+    if(req.session.name){
+        res.redirect('/dashboard');
+    }
+    else{
+        res.render('login', {message: null});
+    }
 });
 
 //login form submit
 router.post('/', async (req, res) => {
     try {
-        if(req.session.userId){
+        if(req.session.name){
             res.redirect('/dashboard');
         }
         const checkExisting = await collection.findOne({email: req.body.email});

@@ -43,6 +43,7 @@ body{
     display: flex;
     width: 650px;
     text-align: center;
+    font-weight: bold;
     padding: 3rem;
     padding-bottom: 4rem;
     border-radius: 80px;
@@ -51,14 +52,11 @@ body{
 
 
 .text{
-    color: var(--black);
+    color: var(--white);
     font-family: 'Courier New', Courier, monospace;
     font-size: 25px;
 }
 
-.container:hover{
-    background-color: #7b7b7b46;
-}
 
 .one{
     text-shadow: 0 0 3px var(--white);
@@ -74,4 +72,21 @@ a{
     color: var(--black);
     text-decoration: none;
     color: var(--indigo);
+}
+
+.log, .sig{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #450303;
+    color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    width: 15%;
+}
+
+.btns{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
 }

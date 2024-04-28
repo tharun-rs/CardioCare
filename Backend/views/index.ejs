@@ -16,7 +16,7 @@
     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>-->
 
     <!-- The video -->
-    <video autoplay muted loop id="myVideo">
+    <video autoplay muted loop id="myVideo" onclick="pauseit()">
         <source src="/documents/videos/vid.mp4" type="video/mp4">
     </video>
 
@@ -26,8 +26,22 @@
         <br>
         <div class="text two">An expertly crafted companion, dedicated to nurturing your most cherished possession – the exquisite heart.</div>
         <br>
-        <div class="text login">Ready for your diagnosis?<a href="/login"> login</a></div>
-        <div class="text signup">Don't have an account?<a href="/signup">  signup!</a></div>
+        <div class="btns">
+            <div class="log"><a href="/login">login</a></div>
+            <div class="sig"><a href="/signup"> signup!</a></div>
+        </div>
     </div>
+
+    <script>
+        var video = document.getElementById("myVideo"); 
+        function pauseit() {
+          if (video.paused) {
+            video.play();
+          } else {
+            video.pause();
+            }
+        }
+    </script>
+
 </body>
 </html>

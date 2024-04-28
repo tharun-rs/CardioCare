@@ -21,6 +21,9 @@ body{
     image-rendering: optimizeQuality;
     height: 100vh;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -42,9 +45,6 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     padding: 50px;
     border-radius: 15px;
-    position: relative;
-    top: 160px;
-    left: 400px;
     z-index: 2;
     background-color: var(--blood);
     height: fit-content;
@@ -59,7 +59,7 @@ form{
     padding-bottom: 10px;
 }
 
-input[type=text]{
+input[type=text], input[type=password]{
     box-sizing: border-box;
     border-radius: 15px;
     padding-left: 10px;
@@ -70,7 +70,7 @@ input[type=text]{
     outline: none;
 }
 
-input[type=text]:hover{
+input[type=text]:hover, input[type=password]:hover{
     box-shadow: 0 0 10px var(--white);
 }
 
@@ -102,10 +102,10 @@ a{
     text-decoration: none;
 }
 
-img{
-    position: absolute;
-    top: 20px;
-    right: 20px;
+.container img{
+    position: relative;
+    top:-20px;
+    right: -360px;
 }
 
 .warning {

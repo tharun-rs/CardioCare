@@ -121,3 +121,67 @@ a:hover{
     height: 45px;
     object-fit: contain;
 }
+
+.dash-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color:black;
+    font-size: 25px;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+}
+
+.new-diag{
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #747691;
+    width: 40%;
+    height: 55%;
+    border: 3px solid var(--indigo);
+}
+
+input[type=submit]{
+    color:white;
+    background-color: var(--indigo);
+    outline: none;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+input[type=submit]:hover{
+    box-shadow: 0 0 10px var(--black);
+}
+
+input[type=file]{
+    z-index: 2;
+    border: none;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 5rem;
+}
+
+#file-upload-button{
+    background-color: var(--black);
+}
+
+#file-preview{
+    z-index: 3;
+    display: flex;
+    object-fit: fill;
+    max-height: 100%;
+}
+
+#diagnosisResult{
+    padding-top: 1rem;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
