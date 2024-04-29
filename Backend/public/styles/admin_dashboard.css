@@ -185,3 +185,9 @@ input[type=file]{
     font-weight: bold;
     font-size: 20px;
 }
+
+#savediag{
+    padding-bottom: 1rem;
+    color: black;
+    font-size: 16px;
+}
