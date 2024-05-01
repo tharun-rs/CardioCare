@@ -49,3 +49,25 @@ function previewFile() {
         preview.innerHTML = 'No file selected';
     }
 }
+
+function sendRequest(url, imageData) {
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+
+    // Configure the request
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // Define a callback function to handle the response
+    xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            document.getElementById(imageData).innerHTML = "Sent";
+            console.log('Request sent successfully');
+        } else {
+            console.error('Failed to send request');
+        }
+    };
+
+    // Send the request with the image data
+    xhr.send('image=' + encodeURIComponent(imageData));
+}

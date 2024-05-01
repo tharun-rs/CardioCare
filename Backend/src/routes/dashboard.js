@@ -101,10 +101,20 @@ router.get('/history', activeUser, async (req, res) => {
 });
 
 
-router.get('/opinion/requests', activeUser, (req,res) =>{
-    const name = req.session.name;
-    const email = req.session.email;
-    res.render('user_dashboard',{name: name, email: email, page: 'opinion'});
+router.get('/opinion/requests', activeUser, async (req,res) =>{
+    try {
+        const name = req.session.name;
+        const email = req.session.email;
+
+        // Query patient diagnoses matching the userID equal email
+        const diagnoses = await diagnosisCollection.find({ userid: email, opinionReq: true });
+
+        // Render the user_dashboard EJS template and pass the queried data
+        res.render('user_dashboard', { name: name, email: email, page: 'opinion', diagnoses: diagnoses });
+    } catch (error) {
+        console.error('Error querying patient diagnoses:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
 
@@ -127,5 +137,31 @@ router.get('/images/:filename', activeUser, (req, res) => {
         res.status(403).send('Unauthorized access');
     }
 });
+
+router.post('/request/create', async (req, res) => {
+    const imageData = req.body.image;
+    try {
+        // Find the diagnosis document with the given image data
+        const diagnosis = await diagnosisCollection.findOneAndUpdate(
+            { image: imageData },
+            { $set: { opinionReq: true } },
+            { new: true }
+        );
+
+        if (diagnosis) {
+            // Diagnosis found and updated successfully
+            res.status(200).send("Success");
+        } else {
+            // Diagnosis not found
+            res.status(404).send("Diagnosis not found");
+        }
+    } catch (error) {
+        // Error occurred while updating diagnosis
+        console.error('Error:', error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+
 
 module.exports = router;

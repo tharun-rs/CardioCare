@@ -63,14 +63,19 @@
                     </tr>
                     <% let serialNumber = 1; %>
                     <% diagnoses.forEach(diagnosis => { %>
-                        <% if(diagnosis.opinionReq){ %>
-                            <tr>
-                                <td><%= serialNumber %></td>
-                                <td><a href="/dashboard/images/<%= diagnosis.image %>">View image</a></td>
-                                <td><%= diagnosis.predClass %></td>
-                            </tr>
-                            <% serialNumber++; %>
-                        <% } %>
+                        <tr>
+                            <td><%= serialNumber %></td>
+                            <td><a href="/dashboard/images/<%= diagnosis.image %>">View image</a></td>
+                            <td><%= diagnosis.predClass %></td>
+                            <% if(diagnosis.verified){ %>
+                                <td>Verified</td>
+                                <td><%= diagnosis.newPred %></td>
+                            <% }else{ %>
+                                <td>Pending</td>
+                                <td> - </td>
+                            <% } %>
+                        </tr>
+                        <% serialNumber++; %>
                     <% }); %>
                 </table>
             </div>
@@ -93,7 +98,11 @@
                         <td><%= new Date(diagnosis.createdAt).toLocaleDateString() %></td>
                         <td><a class="view-image" href="/dashboard/images/<%= diagnosis.image %>">View image</a></td>
                         <td><%= diagnosis.predClass %></td>
-                        <td><a href="/dashboard/request/create">Request</a></td>
+                        <% if(! diagnosis.opinionReq){ %>
+                            <td id="<%= diagnosis.image %>"><a href="#" onclick="sendRequest('/dashboard/request/create', '<%= diagnosis.image %>')">Request</a></td>
+                        <% }else{ %>
+                            <td>Sent</td>
+                        <% } %>
                     </tr>
                     <% serialNumber++; %>
                 <% }); %>
