@@ -4,7 +4,7 @@ from torch_utils import transform_image, get_prediction
 app = Flask(__name__)
 
 ALLOWED_EXTENSIONS = ('png','jpg','jpeg')
-CLASSES_OF_PREDICTION = ('Arrythmia', 'Myocardial Infarction', 'Normal', 'History of MI')
+CLASSES_OF_PREDICTION = ('Arrhythmia', 'Myocardial Infarction', 'Normal', 'History of MI')
 
 def allowed_file(file_name):
     return '.' in file_name and file_name.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS
