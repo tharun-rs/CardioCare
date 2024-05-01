@@ -237,3 +237,7 @@ tr,td,th{
     background-color: transparent;
     text-decoration: underline;
 }
+
+th,td{
+    width: 130px;
+}
