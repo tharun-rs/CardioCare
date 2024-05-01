@@ -16,12 +16,19 @@
     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>-->
 
     <!-- The video -->
+    <div class="videobg">
     <video autoplay muted loop id="myVideo" onclick="pauseit()">
         <source src="/documents/videos/vid.mp4" type="video/mp4">
     </video>
+    <div class="container">
+        <div class="text two">Heart is the most important organ.<br> Help us save yours</div>
+        <button onclick="scrollToJoin()">Join us</button>
+    </div>
+    </div>
 
     <!--Overlay-->
-    <div class="container">
+    
+    <div id="joinus" class="container-2">
         <div class="text one">CardioCare</div>
         <br>
         <div class="text two">An expertly crafted companion, dedicated to nurturing your most cherished possession – the exquisite heart.</div>
@@ -33,6 +40,8 @@
     </div>
 
     <script>
+
+
         var video = document.getElementById("myVideo"); 
         function pauseit() {
           if (video.paused) {
@@ -40,6 +49,10 @@
           } else {
             video.pause();
             }
+        }
+
+        function scrollToJoin(){
+            document.getElementById('joinus').scrollIntoView({behavior:"smooth"});
         }
     </script>
 
