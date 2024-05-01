@@ -73,17 +73,7 @@
 
         <% if (page==='history' ) { %>
             <div class="dash-body user">
-                <h2>Patient Diagnosis History</h2>
-                <ul>
-                    <% diagnoses.forEach(diagnosis=> { %>
-                        <li>
-                            <strong>Predicted Class:</strong>
-                            <%= diagnosis.predClass %><br>
-                            <strong>Image:</strong>
-                            <a href="/dashboard/images/<%= diagnosis.image %>">View image</a>   
-                        </li>
-                    <% }); %>
-                </ul>
+               
             </div>
         <% } %>
 
@@ -93,3 +83,16 @@
 </body>
 
 </html>
+
+
+<!-- <h2>Patient Diagnosis History</h2>
+<ul>
+    <% diagnoses.forEach(diagnosis=> { %>
+        <li>
+            <strong>Predicted Class:</strong>
+            <%= diagnosis.predClass %><br>
+            <strong>Image:</strong>
+            <a href="/dashboard/images/<%= diagnosis.image %>">View image</a>   
+        </li>
+    <% }); %>
+</ul> -->
