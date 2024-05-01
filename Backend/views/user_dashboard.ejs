@@ -73,8 +73,19 @@
                     <th>Date</th>
                     <th>Image</th>
                     <th>Prediction</th>
-                    <th>Request 2nd opinion</th>
+                    <th>2nd opinion</th>
                 </tr>
+                <% let serialNumber = 1; %>
+                <% diagnoses.forEach(diagnosis=> { %>
+                    <tr class="table headings">
+                        <td><%= serialNumber %></td>
+                        <td><%= new Date(diagnosis.createdAt).toLocaleDateString() %></td>
+                        <td><a href="/dashboard/images/<%= diagnosis.image %>">View image</a></td>
+                        <td><%= diagnosis.predClass %></td>
+                        <td><a href="/dashboard/request/create">Request</a></td>
+                    </tr>
+                    <% serialNumber++; %>
+                <% }); %>
                </table>
             </div>
         <% } %>
@@ -85,16 +96,3 @@
 </body>
 
 </html>
-
-
-<!-- <h2>Patient Diagnosis History</h2>
-<ul>
-    <% diagnoses.forEach(diagnosis=> { %>
-        <li>
-            <strong>Predicted Class:</strong>
-            <%= diagnosis.predClass %><br>
-            <strong>Image:</strong>
-            <a href="/dashboard/images/<%= diagnosis.image %>">View image</a>   
-        </li>
-    <% }); %>
-</ul> -->
