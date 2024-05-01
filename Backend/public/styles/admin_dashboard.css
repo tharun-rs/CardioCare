@@ -218,6 +218,8 @@ input[type=file]{
 }
 
 table{
+    position: relative;
+    top: -150px;
     background-color: var(--indigo);
     font-size: 20px;
     padding: 1rem;
