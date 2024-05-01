@@ -6,6 +6,15 @@ const activeSession = (req, res, next) => {
     }
 };
 
+const activeUser = (req, res, next) => {
+    if(req.session.type === "user"){
+        next();
+    }
+    else{
+        res.redirect('/dashboard');
+    }
+};
+
 const activeAdmin = (req, res, next) => {
     if(req.session.type === "admin"){
         next();
@@ -24,4 +33,4 @@ const activeMedic = (req, res, next) => {
     }
 };
 
-module.exports = { activeSession, activeAdmin, activeMedic };
+module.exports = { activeSession, activeUser, activeAdmin, activeMedic };

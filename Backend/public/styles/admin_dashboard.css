@@ -100,6 +100,13 @@ a:hover{
     border-radius: 15px;
 }
 
+.active{
+    background-color: var(--powder);
+    color:black;
+    width: 100%;
+    border-radius: 15px;
+}
+
 #one, #two, #three{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding-top: 45px;
@@ -191,3 +198,4 @@ input[type=file]{
     color: black;
     font-size: 16px;
 }
+
