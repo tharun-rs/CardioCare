@@ -239,7 +239,7 @@ tr,td,th{
 }
 
 th,td{
-    width: 130px;
+    width: fit-content;
 }
 
 .dropdown{
