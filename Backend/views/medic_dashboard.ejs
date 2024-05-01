@@ -28,29 +28,48 @@
             <table class="table" style="background-color: var(--morepurple);">
                 <tr class="table headings">
                     <th>S.No</th>
+                    <th>Patient email</th>
                     <th>Image</th>
                     <th>Prediction</th>
                     <th>Status</th>
                     <th>Professional Opinion</th>
+                    <th>Submit opinion</th>
                 </tr>
+                <% let serialNumber = 1 %>
+                <% diagnoses.forEach(diagnosis => { %>
                 <tr>
-                    <td>1</td>
-                    <td>apple.jpg</td>
-                    <td>bitch u ded</td>
-                    <td>dead af</td>
-                    <td><label for="diaseases">prediction</label>
-                        <select class="dropdown" name="diaseases" id="diseases">
-                            <option value="ab">Arrhythmia</option>
-                            <option value="mi">Myocardial Infarction</option>
-                            <option value="norm">Normal</option>
-                            <option value="hiss">History of MI</option>
-                        </select>
-                    </td>
+                    <td><%= serialNumber %></td>
+                    <td><%= diagnosis.userid %></td>
+                    <td><a class="view-image" href="/dashboard/medic/images/<%= diagnosis.image %>">View image</a></td>
+                    <td><%= diagnosis.predClass %></td>
+                    <% if(! diagnosis.verified){ %>
+                        <td id="verify<%= diagnosis.image %>">Not verified</td>
+                        <td>
+                            <select class="dropdown" name="diseases" id="select<%= diagnosis.image %>">
+                                <option value="Arrhythmia">Arrhythmia</option>
+                                <option value="Myocardial Infarction">Myocardial Infarction</option>
+                                <option value="Normal">Normal</option>
+                                <option value="History of MI">History of MI</option>
+                            </select>
+                        </td>
+                        <td><button id="button<%= diagnosis.image %>" onclick="submitOpinion('<%= diagnosis.image %>')">Submit</button></td>
+                    <% } else { %>
+                        <td>Verified</td>
+                        <td><select class="dropdown" name="diseases" id="select<%= diagnosis.image %>" disabled>
+                            <option value="Arrhythmia">Arrhythmia</option>
+                            <option value="Myocardial Infarction">Myocardial Infarction</option>
+                            <option value="Normal">Normal</option>
+                            <option value="History of MI">History of MI</option>
+                        </select></td>
+                        <td><button disabled>Submit</button></td>
+                    <% } %>
 
                 </tr>
+                <% }); %>
             </table>
         </div>
     </div>
+    <script src="/script/medic_dashboard.js"></script>
 </body>
 
 </html>

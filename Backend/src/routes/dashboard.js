@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {_, diagnosisCollection} = require("../config");
+const { _, diagnosisCollection } = require("../config");
 const multer = require('multer');
 const FormData = require('form-data');
 const axios = require('axios');
@@ -11,24 +11,35 @@ const { activeSession, activeUser, activeAdmin, activeMedic } = require('../sess
 
 const upload = multer();
 
-router.get('/', activeSession, (req,res) => {
+router.get('/', activeSession, async (req, res) => {
     const name = req.session.name;
     const email = req.session.email;
-    switch(req.session.type){
+    switch (req.session.type) {
         case 'user':
-            res.render('user_dashboard',{name: name, email: email, page: 'new'});
+            res.render('user_dashboard', { name: name, email: email, page: 'new' });
             break;
         case 'medic':
-            res.render('medic_dashboard',{name: name, email: email});
+            try {
+                const name = req.session.name;
+                const email = req.session.email;
+                
+                // Find unverified diagnoses and await the result
+                const diagnoses = await diagnosisCollection.find({ opinionReq: true });
+                
+                res.render('medic_dashboard', { name: name, email: email, diagnoses: diagnoses });
+            } catch (error) {
+                console.error('Error:', error);
+                res.status(500).send('Internal Server Error');
+            }
             break;
         case 'admin':
-            res.render('admin_dashboard',{name: name, email: email});
+            res.render('admin_dashboard', { name: name, email: email });
             break;
     }
 });
 
 
-async function savePatientDiagnosis(imageBuffer, predClass, userID){
+async function savePatientDiagnosis(imageBuffer, predClass, userID) {
     try {
         const filename = `${userID}_${Date.now()}.jpg`; // You can use any suitable filename format
         // Specify the directory where you want to save the image file
@@ -52,7 +63,7 @@ async function savePatientDiagnosis(imageBuffer, predClass, userID){
 
         // Save the patient diagnosis to the database
         await newDiagnosis.save();
-        
+
         console.log("Patient diagnosis saved successfully!");
     } catch (error) {
         console.error('Error saving patient diagnosis:', error);
@@ -71,7 +82,7 @@ router.post('/upload', activeUser, upload.single('ecg'), async (req, res) => {
                 ...formData.getHeaders(),
             },
         });
-        if(saveDiagnosis){
+        if (saveDiagnosis) {
             savePatientDiagnosis(req.file.buffer, response.data.class, userID);
         }
         res.send(response.data);
@@ -101,7 +112,7 @@ router.get('/history', activeUser, async (req, res) => {
 });
 
 
-router.get('/opinion/requests', activeUser, async (req,res) =>{
+router.get('/opinion/requests', activeUser, async (req, res) => {
     try {
         const name = req.session.name;
         const email = req.session.email;
@@ -138,6 +149,20 @@ router.get('/images/:filename', activeUser, (req, res) => {
     }
 });
 
+router.get('/medic/images/:filename', activeMedic, (req, res) => {
+    const filename = req.params.filename;
+    const imagePath = path.join(__dirname, 'diagnose_ecg', filename);
+    // Check if the image file exists
+    if (fs.existsSync(imagePath)) {
+        // Serve the image file
+        res.sendFile(imagePath);
+    } else {
+        // Image not found
+        res.status(404).send('Image not found');
+    }
+
+});
+
 router.post('/request/create', async (req, res) => {
     const imageData = req.body.image;
     try {
@@ -161,6 +186,32 @@ router.post('/request/create', async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
+
+router.post('/opinion/submit', async (req, res) => {
+    const { disease, image } = req.body;
+  
+    try {
+      // Find the diagnosis entry based on the image ID
+      const diagnosis = await diagnosisCollection.findOne({ image });
+  
+      if (!diagnosis) {
+        return res.status(404).json({ message: 'Diagnosis entry not found' });
+      }
+  
+      // Update the diagnosis entry
+      diagnosis.newPred = disease;
+      diagnosis.verified = true;
+  
+      // Save the updated diagnosis entry
+      await diagnosis.save();
+  
+      res.status(200).json({ message: 'Diagnosis entry updated successfully' });
+    } catch (error) {
+      console.error('Error updating diagnosis entry:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+  
 
 
 
