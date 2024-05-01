@@ -218,8 +218,8 @@ input[type=file]{
 }
 
 table{
-    position: relative;
-    top: -150px;
+    position: absolute;
+    top: 170px;
     background-color: var(--indigo);
     font-size: 20px;
     padding: 1rem;
@@ -240,4 +240,12 @@ tr,td,th{
 
 th,td{
     width: 130px;
+}
+
+.dropdown{
+    color:black;
+}
+
+option{
+    color:#000;
 }
