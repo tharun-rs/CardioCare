@@ -53,21 +53,15 @@
 
         <% if (page==='opinion' ) { %>
             <div class="dash-body user">
-
-                Upload ECG image to get diagnosed!<br><br>
-                <div class="new-diag">
-                    <form id="uploadForm" action="/dashboard/upload" method="post"
-                        enctype="multipart/form-data">
-                        <input type="file" id="ecg" name="ecg" accept=".jpg, .png, .jpeg"
-                            onchange="previewFile()">
-                        <div id="file-preview"></div>
-                </div>
-                <br>
-                <span id="savediag"><input id="savediag" type="checkbox" name="save" value="save">Save
-                    diagnosis</span>
-                <input id="getdiag" type="submit" value="get diagnosis">
-                </form>
-                <div id="diagnosisResult"></div>
+                <table class="table">
+                    <tr class="table headings">
+                        <th>S.No</th>
+                        <th>Image</th>
+                        <th>Prediction</th>
+                        <th>Status</th>
+                        <th>Professional Opinion</th>
+                    </tr>
+                </table>
             </div>
         <% } %>
 
