@@ -199,3 +199,20 @@ input[type=file]{
     font-size: 16px;
 }
 
+table{
+    background-color: var(--indigo);
+    font-size: 20px;
+    padding: 1rem;
+}
+
+tr,td,th{
+    border: 1px solid white;
+    padding: 1rem;
+}
+
+.view-image:hover{
+    color: white;
+    padding: none;
+    background-color: transparent;
+    text-decoration: underline;
+}

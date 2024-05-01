@@ -82,7 +82,7 @@
                 <tr>
                     <th>S.No</th>
                     <th>Date</th>
-                    <th class="view-image">Image</th>
+                    <th>Image</th>
                     <th>Prediction</th>
                     <th>2nd opinion</th>
                 </tr>
@@ -91,7 +91,7 @@
                     <tr class="table headings">
                         <td><%= serialNumber %></td>
                         <td><%= new Date(diagnosis.createdAt).toLocaleDateString() %></td>
-                        <td><a href="/dashboard/images/<%= diagnosis.image %>">View image</a></td>
+                        <td><a class="view-image" href="/dashboard/images/<%= diagnosis.image %>">View image</a></td>
                         <td><%= diagnosis.predClass %></td>
                         <td><a href="/dashboard/request/create">Request</a></td>
                     </tr>
