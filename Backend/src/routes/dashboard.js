@@ -39,7 +39,7 @@ router.get('/', activeSession, async (req, res) => {
 });
 
 
-async function savePatientDiagnosis(imageBuffer, predClass, userID) {
+async function savePatientDiagnosis(imageBuffer, predClass, userID, name) {
     try {
         const filename = `${userID}_${Date.now()}.jpg`; // You can use any suitable filename format
         // Specify the directory where you want to save the image file
@@ -53,6 +53,7 @@ async function savePatientDiagnosis(imageBuffer, predClass, userID) {
         fs.writeFileSync(imagePath, imageBuffer);
 
         const newDiagnosis = new diagnosisCollection({
+            name: name,
             userid: userID,
             image: filename,
             predClass: predClass,
@@ -74,6 +75,7 @@ router.post('/upload', activeUser, upload.single('ecg'), async (req, res) => {
     try {
         const apiUrl = 'http://127.0.0.1:5000/predict';
         const userID = req.session.email;
+        const name = req.session.name;
         const formData = new FormData();
         formData.append('file', req.file.buffer, { filename: req.file.originalname });
         const saveDiagnosis = req.body.save === 'save';
@@ -83,7 +85,7 @@ router.post('/upload', activeUser, upload.single('ecg'), async (req, res) => {
             },
         });
         if (saveDiagnosis) {
-            savePatientDiagnosis(req.file.buffer, response.data.class, userID);
+            savePatientDiagnosis(req.file.buffer, response.data.class, userID, name);
         }
         res.send(response.data);
     } catch (error) {
