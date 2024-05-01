@@ -61,6 +61,17 @@
                         <th>Status</th>
                         <th>Professional Opinion</th>
                     </tr>
+                    <% let serialNumber = 1; %>
+                    <% diagnoses.forEach(diagnosis => { %>
+                        <% if(diagnosis.opinionReq){ %>
+                            <tr>
+                                <td><%= serialNumber %></td>
+                                <td><a href="/dashboard/images/<%= diagnosis.image %>">View image</a></td>
+                                <td><%= diagnosis.predClass %></td>
+                            </tr>
+                            <% serialNumber++; %>
+                        <% } %>
+                    <% }); %>
                 </table>
             </div>
         <% } %>
