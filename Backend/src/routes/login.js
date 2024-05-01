@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const collection = require("../config");
+const {collection, _ } = require("../config");
 
 
 //render page
