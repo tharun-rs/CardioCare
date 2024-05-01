@@ -22,6 +22,7 @@ const loginSchema = new mongoose.Schema({
 
 
 const patientDiagnosisSchema = new mongoose.Schema({
+    name: {type: String, required: true},
     userid: {type: String, required: true},
     image: { type: String, required: true },
     predClass: { type: String, required: true },

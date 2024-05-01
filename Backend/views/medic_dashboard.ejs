@@ -28,7 +28,7 @@
             <table class="table" style="background-color: var(--morepurple);">
                 <tr class="table headings">
                     <th>S.No</th>
-                    <th>Patient email</th>
+                    <th>Patient Name</th>
                     <th>Image</th>
                     <th>Prediction</th>
                     <th>Status</th>
@@ -39,7 +39,7 @@
                 <% diagnoses.forEach(diagnosis => { %>
                 <tr>
                     <td><%= serialNumber %></td>
-                    <td><%= diagnosis.userid %></td>
+                    <td><%= diagnosis.name %></td>
                     <td><a class="view-image" href="/dashboard/medic/images/<%= diagnosis.image %>">View image</a></td>
                     <td><%= diagnosis.predClass %></td>
                     <% if(! diagnosis.verified){ %>
@@ -65,6 +65,7 @@
                     <% } %>
 
                 </tr>
+                <% serialNumber++; %>
                 <% }); %>
             </table>
         </div>
