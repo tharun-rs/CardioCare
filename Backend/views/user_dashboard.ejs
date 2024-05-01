@@ -93,7 +93,7 @@
                         <td><%= new Date(diagnosis.createdAt).toLocaleDateString() %></td>
                         <td><a class="view-image" href="/dashboard/images/<%= diagnosis.image %>">View image</a></td>
                         <td><%= diagnosis.predClass %></td>
-                        <td><a href="/dashboard/request/create">Request</a></td>
+                        <td><a class="view-image" href="/dashboard/request/create">Request</a></td>
                     </tr>
                     <% serialNumber++; %>
                 <% }); %>
