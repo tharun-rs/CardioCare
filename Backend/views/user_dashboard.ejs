@@ -99,7 +99,7 @@
                         <td><a class="view-image" href="/dashboard/images/<%= diagnosis.image %>">View image</a></td>
                         <td><%= diagnosis.predClass %></td>
                         <% if(! diagnosis.opinionReq){ %>
-                            <td id="<%= diagnosis.image %>"><a href="#" onclick="sendRequest('/dashboard/request/create', '<%= diagnosis.image %>')">Request</a></td>
+                            <td id="<%= diagnosis.image %>"><a class="view-image" href="#" onclick="sendRequest('/dashboard/request/create', '<%= diagnosis.image %>')">Request</a></td>
                         <% }else{ %>
                             <td>Sent</td>
                         <% } %>
