@@ -16,6 +16,7 @@
     --morepurple: #2b175a;
     --peachy: #c3afaf;
     --indigo: #070a28;
+    --morepowder: #cab58c;
 }
 
 body{
@@ -61,7 +62,7 @@ ul{
     justify-content: center;
     column-gap: 52%;
     grid-column: 3/10;
-    background-color: var(--powder);
+    background-color: var(--morepowder);
 }
 
 .dash-body{
