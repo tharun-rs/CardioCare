@@ -224,6 +224,7 @@ table{
     font-size: 20px;
     padding: 1rem;
     border-radius: 10px;
+    width: 900px;
 }
 
 tr,td,th{
@@ -239,7 +240,7 @@ tr,td,th{
 }
 
 th,td{
-    width: fit-content;
+    min-width: fit-content;
 }
 
 .dropdown{
