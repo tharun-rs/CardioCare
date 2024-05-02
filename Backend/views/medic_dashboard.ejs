@@ -30,7 +30,7 @@
             <table class="table" style="background-color: var(--morepurple);">
                 <tr class="table headings">
                     <th>S.No</th>
-                    <th>Patient Name</th>
+                    <th>Name</th>
                     <th>Image</th>
                     <th>Prediction</th>
                     <th>Status</th>
@@ -42,7 +42,7 @@
                 <tr>
                     <td><%= serialNumber %></td>
                     <td><%= diagnosis.name %></td>
-                    <td><a class="view-image" href="/dashboard/medic/images/<%= diagnosis.image %>">View image</a></td>
+                    <td><button class="view-image" action="window.location = '/dashboard/medic/images/<%= diagnosis.image %>'">View image</button></td>
                     <td><%= diagnosis.predClass %></td>
                     <% if(! diagnosis.verified){ %>
                         <td id="verify<%= diagnosis.image %>">Not verified</td>
@@ -63,7 +63,7 @@
                             <option value="Normal">Normal</option>
                             <option value="History of MI">History of MI</option>
                         </select></td>
-                        <td><button disabled>Submit</button></td>
+                        <td><button class="sub" disabled>Submit</button></td>
                     <% } %>
 
                 </tr>

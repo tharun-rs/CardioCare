@@ -220,7 +220,7 @@ input[type=file]{
 
 table{
     position: absolute;
-    top: 170px;
+    top: 25%;
     background-color: var(--indigo);
     font-size: 20px;
     padding: 1rem;
@@ -230,10 +230,21 @@ table{
 
 tr,td,th{
     border: 1px solid white;
-    padding: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+}
+
+.view-image{
+    font-family: 'Times New Roman', Times, serif;
+    background-color: transparent;
+    font-size: 18px;
+    border: none;
 }
 
 .view-image:hover{
+    width: fit-content;
     color: white;
     padding: none;
     background-color: transparent;
@@ -250,4 +261,13 @@ th,td{
 
 option{
     color:#000;
+}
+
+.sub{
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border: none;
 }
