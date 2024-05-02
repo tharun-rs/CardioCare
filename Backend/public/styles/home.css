@@ -60,7 +60,7 @@ body {
     font-weight: bold;
     padding: 3rem;
     padding-bottom: 4rem;
-    background-color: #736f6f6b;
+    background-color: #9a8a8a2d;
     /* Add other stylergba(93, 0, 0, 0.401) needed */
 }
 
@@ -180,7 +180,7 @@ button:hover {
 
 .joinusbtn{
     font-family: 'Courier New', Courier, monospace;
-    background-color: var(--wine);
+    background-color: #450303;
     color: var(--powder);
     padding: 0.9rem;
     margin-top: 10px;
@@ -188,4 +188,8 @@ button:hover {
     min-width:fit-content;
     font-size: 25px;
     border: none;
+}
+
+.joinusbtn:hover{
+    box-shadow: 0 0 10px var(--morered);
 }
