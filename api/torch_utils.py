@@ -4,6 +4,8 @@ import torchvision.transforms as transforms
 from PIL import Image
 from torchvision.models import alexnet
 import io
+import cv2
+import numpy as np
 
 #load the model
 model = alexnet()
@@ -28,5 +30,27 @@ def get_prediction(image_tensor):
     output = model(image_tensor)
     _, predicted = torch.max(output.data, 1)
     return predicted
+
+
+
+def is_ecg(uploaded_image, reference_image='./reference_ecg.jpg', threshold=0.2):
+    nparr = np.frombuffer(uploaded_image, np.uint8)
+    uploaded_img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    reference_img = cv2.imread(reference_image, cv2.IMREAD_GRAYSCALE)
+    sift = cv2.SIFT_create()
+    kp1, des1 = sift.detectAndCompute(reference_img, None)
+    kp2, des2 = sift.detectAndCompute(uploaded_img, None)
+    flann = cv2.FlannBasedMatcher(dict(algorithm=1, trees=5), dict(checks=50))
+
+    matches = flann.knnMatch(des1, des2, k=2)
+
+    good_matches = []
+    for m, n in matches:
+        if m.distance < 0.7 * n.distance:
+            good_matches.append(m)
+
+    similarity_score = len(good_matches) / len(kp1)
+
+    return similarity_score > threshold
 
     

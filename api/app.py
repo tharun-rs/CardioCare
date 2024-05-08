@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from torch_utils import transform_image, get_prediction
+from torch_utils import transform_image, get_prediction, is_ecg
 
 app = Flask(__name__)
 
@@ -21,6 +21,8 @@ def predict():
         
         try:
             imgage_bytes = file.read()
+            if not is_ecg(imgage_bytes):
+                return jsonify({'error': 'Not an ECG Image'})
             img_tensor = transform_image(imgage_bytes)
             prediction = get_prediction(img_tensor)
             print(prediction.item())
@@ -29,6 +31,7 @@ def predict():
             return jsonify({'class':predicted_class})
 
         except:
+            print(Exception)
             return jsonify({'error':'Error during prediction'})
 
 

@@ -16,7 +16,7 @@ document.getElementById('getdiag').addEventListener('click', function (event) {
                 document.getElementById('diagnosisResult').innerText = 'Diagnosis: ' + response.class;
             } else {
                 // If the 'class' field is not found, display an error message
-                document.getElementById('diagnosisResult').innerText = 'Error: Class data not found in response';
+                document.getElementById('diagnosisResult').innerText = 'Error:' + response.error;
             }
         } else {
             // Handle errors if any
@@ -35,17 +35,22 @@ function previewFile() {
 
     reader.onloadend = function () {
         const img = new Image();
+        img.onload = function() {
+            if (img.width < 256 || img.height < 256) {
+                preview.innerHTML = 'Error: Low image quality. Upload a better image (minimum 256x256 pixels)';
+            } else {
+                img.style.maxWidth = '100%';
+                img.style.maxHeight = '100%';
+                preview.innerHTML = '';
+                preview.appendChild(img);
+            }
+        };
         img.src = reader.result;
-        img.style.maxWidth = '100%';
-        img.style.maxHeight = '100%';
-        preview.innerHTML = '';
-        preview.appendChild(img);
-    }
+    };
 
     if (file) {
         reader.readAsDataURL(file);
-    }
-    else {
+    } else {
         preview.innerHTML = 'No file selected';
     }
 }
