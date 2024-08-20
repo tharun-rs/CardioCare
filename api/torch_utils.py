@@ -6,13 +6,18 @@ from torchvision.models import alexnet
 import io
 import cv2
 import numpy as np
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 #load the model
 model = alexnet()
 num_ftrs = model.classifier[6].in_features
 num_classes = 4
 model.classifier[6] = nn.Linear(num_ftrs, num_classes)
-model.load_state_dict(torch.load('../Model/advtrained.pth', map_location=torch.device('cpu')))
+model_name = os.getenv('MODEL_NAME', 'advtrained')
+model.load_state_dict(torch.load(f'../Model/{model_name}.pth', map_location=torch.device('cpu')))
 model.eval()
 
 
