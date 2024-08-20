@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const { _, diagnosisCollection } = require("../config");
@@ -73,7 +74,7 @@ async function savePatientDiagnosis(imageBuffer, predClass, userID, name) {
 
 router.post('/upload', activeUser, upload.single('ecg'), async (req, res) => {
     try {
-        const apiUrl = 'http://127.0.0.1:5000/predict';
+        const apiUrl = '${process.env.API_URL}/predict';
         const userID = req.session.email;
         const name = req.session.name;
         const formData = new FormData();
